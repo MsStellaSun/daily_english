@@ -13,14 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
 
-      - name: Set up Python
-        uses: actions/setup-python@v5.6.0
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install zhipuai
-
       - name: Generate today's phrases
         env:
           GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
