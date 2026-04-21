@@ -1,9 +1,6 @@
 """
 Daily Professional English Phrases Generator
-Uses ZhipuAI (GLM) API to generate content and renders it into template.html
-
-Requirements:
-  pip install zhipuai
+Uses ZhipuAI (GLM) API via direct HTTP — no third-party packages needed.
 
 GitHub Secret needed:
   GLM_API_KEY  — your ZhipuAI API key from https://open.bigmodel.cn
@@ -12,9 +9,9 @@ GitHub Secret needed:
 import json
 import os
 import re
+import urllib.request
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from zhipuai import ZhipuAI
 
 # ── Config ──────────────────────────────────────────────────────────────────
 
@@ -59,17 +56,30 @@ For each phrase return a JSON object with these exact keys:
 
 Return ONLY a valid JSON array of 5 objects. No markdown fences, no explanation, no extra text."""
 
-# ── Call GLM API ─────────────────────────────────────────────────────────────
+# ── Call GLM API (pure stdlib, no pip installs needed) ───────────────────────
 
-client = ZhipuAI(api_key=os.environ["GLM_API_KEY"])
+api_key = os.environ["GLM_API_KEY"]
 
-response = client.chat.completions.create(
-    model=MODEL,
-    messages=[{"role": "user", "content": PROMPT}],
-    temperature=0.9,
+payload = json.dumps({
+    "model": MODEL,
+    "messages": [{"role": "user", "content": PROMPT}],
+    "temperature": 0.9,
+}).encode("utf-8")
+
+req = urllib.request.Request(
+    "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+    data=payload,
+    headers={
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}",
+    },
+    method="POST",
 )
 
-raw = response.choices[0].message.content.strip()
+with urllib.request.urlopen(req, timeout=60) as resp:
+    result = json.loads(resp.read().decode("utf-8"))
+
+raw = result["choices"][0]["message"]["content"].strip()
 
 # Strip markdown code fences if the model added them anyway
 raw = re.sub(r"^```(?:json)?\s*", "", raw)
