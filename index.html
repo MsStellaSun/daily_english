@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Professional English</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c08a50;
+      --gold-light: #f5ede0;
+      --bg: #f5f4f0;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #888;
+      --subtle: #f0ede8;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--subtle);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-brand {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-brand span { color: var(--gold); }
+
+    .nav-date {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #fff;
+      padding: 36px 20px 32px;
+      text-align: center;
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      max-width: 320px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    .streak-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(192,138,80,0.18);
+      border: 1px solid rgba(192,138,80,0.4);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: #e8c48a;
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      background: #fff;
+      border-bottom: 1px solid var(--subtle);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      flex-shrink: 0;
+      padding: 13px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .tab.active {
+      color: var(--text);
+      border-bottom-color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      padding: 20px 16px 60px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* ── PHRASE CARDS ── */
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card-number {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card-tag {
+      font-size: 10px;
+      background: var(--gold-light);
+      color: var(--gold);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .phrase {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .meaning {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--subtle);
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #bbb;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .examples { margin-bottom: 14px; }
+
+    .example {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+      padding: 10px 12px 10px 14px;
+      background: #faf9f6;
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+
+    .tip {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.65;
+      background: var(--gold-light);
+      border-radius: 10px;
+      padding: 11px 13px;
+    }
+
+    .tip strong { color: var(--gold); }
+
+    /* ── ARCHIVE ── */
+    .archive-item {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .archive-left { }
+    .archive-date { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .archive-preview { font-size: 12px; color: var(--muted); line-height: 1.4; }
+    .archive-arrow { font-size: 18px; color: #ccc; }
+
+    .today-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 5px;
+      padding: 2px 7px;
+      margin-left: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    /* ── ABOUT ── */
+    .about-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .about-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .about-card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .about-card p:last-child { margin-bottom: 0; }
+
+    .category-list {
+      list-style: none;
+      margin-top: 6px;
+    }
+
+    .category-list li {
+      font-size: 13px;
+      color: #555;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--subtle);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .category-list li:last-child { border-bottom: none; }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid var(--subtle);
+      display: flex;
+      padding: 10px 0 14px;
+      z-index: 10;
+    }
+
+    .bottom-nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-size: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.15s;
+    }
+
+    .bottom-nav-item.active { color: var(--gold); }
+
+    .bottom-nav-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .progress-bar {
+      background: var(--subtle);
+      border-radius: 8px;
+      height: 6px;
+      margin: 6px 0 14px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), #e8a862);
+      border-radius: 8px;
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+
+    .progress-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Daily <span>English</span></div>
+  <div class="nav-date" id="nav-date"></div>
+</nav>
+
+<!-- ── TODAY TAB ── -->
+<div id="section-today" class="section active">
+  <div class="hero">
+    <div class="hero-label">Today's Practice</div>
+    <h1>5 Professional Phrases</h1>
+    <p>Read, understand, and try using one in your work today.</p>
+    <div class="streak-badge">🔥 Day 1 streak — keep it going!</div>
+  </div>
+
+  <div class="content">
+    <div class="progress-label" id="progress-label">0 of 5 phrases reviewed</div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+    <!-- Phrase 1 -->
+    <div class="card" data-phrase="1">
+      <div class="card-meta">
+        <div class="card-number">01</div>
+        <div class="card-tag">Meetings</div>
+      </div>
+      <div class="phrase">To level-set</div>
+      <div class="meaning">To make sure everyone in a meeting or discussion has the same understanding before moving forward. Use it at the start of a meeting or before a key decision.</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"Before we dive in, let me level-set on where we are with the project timeline."</div>
+        <div class="example">"I just want to level-set on our goals for this quarter so we're all aligned."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip"><strong>Register:</strong> Common in corporate meetings, especially in tech and consulting. Avoid in formal written reports — prefer "to establish a shared understanding" there.</div>
+    </div>
+
+    <!-- Phrase 2 -->
+    <div class="card" data-phrase="2">
+      <div class="card-meta">
+        <div class="card-number">02</div>
+        <div class="card-tag">Reports & Writing</div>
+      </div>
+      <div class="phrase">As outlined in …</div>
+      <div class="meaning">Used to refer back to something already written or presented. It avoids repetition and signals that the information has already been established.</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"As outlined in the previous section, the budget will need to be revised."</div>
+        <div class="example">"As outlined in my email last Friday, the deadline has moved to May 3rd."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip"><strong>Common mistake:</strong> Don't say "as I outlined before" in written reports — it sounds too informal. Use "as outlined in [section/document]" for a polished, objective tone.</div>
+    </div>
+
+    <!-- Phrase 3 -->
+    <div class="card" data-phrase="3">
+      <div class="card-meta">
+        <div class="card-number">03</div>
+        <div class="card-tag">Meetings</div>
+      </div>
+      <div class="phrase">I'd like to flag …</div>
+      <div class="meaning">A professional way to bring attention to a concern, risk, or issue without sounding alarming. It shows you are being proactive and responsible.</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"I'd like to flag a potential conflict with our current vendor contract."</div>
+        <div class="example">"Before we finalize this, I'd like to flag that we haven't confirmed the budget approval yet."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip"><strong>Why it works:</strong> "Flag" feels neutral and collaborative, not accusatory. Much softer than "there's a problem with…" — it invites discussion rather than creating tension.</div>
+    </div>
+
+    <!-- Phrase 4 -->
+    <div class="card" data-phrase="4">
+      <div class="card-meta">
+        <div class="card-number">04</div>
+        <div class="card-tag">Polite Disagreement</div>
+      </div>
+      <div class="phrase">I see where you're coming from, and …</div>
+      <div class="meaning">A way to acknowledge someone's point before offering a different view. It shows respect for their perspective while opening space for your own.</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"I see where you're coming from, and I do think we need to consider the cost implications first."</div>
+        <div class="example">"I see where you're coming from, and it might be worth looking at the data before we decide."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip"><strong>Key detail:</strong> Use "and" — not "but" — after this phrase. "But" can still sound dismissive. "And" keeps the tone genuinely collaborative.</div>
+    </div>
+
+    <!-- Phrase 5 -->
+    <div class="card" data-phrase="5">
+      <div class="card-meta">
+        <div class="card-number">05</div>
+        <div class="card-tag">Transitions</div>
+      </div>
+      <div class="phrase">To that end, …</div>
+      <div class="meaning">Means "in order to achieve that goal." Use it to connect a stated objective to the action or recommendation that follows. Common in reports and presentations.</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"Our goal is to reduce onboarding time by 30%. To that end, we recommend simplifying the training materials."</div>
+        <div class="example">"We need stronger cross-team collaboration. To that end, I'm proposing a weekly sync between departments."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip"><strong>Register:</strong> Slightly formal — great for written reports and presentations. In casual meetings, "so" or "with that in mind" sounds more natural.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARCHIVE TAB ── -->
+<div id="section-archive" class="section">
+  <div class="content" style="padding-top: 24px;">
+    <a href="#" class="archive-item" onclick="switchTab('today'); return false;">
+      <div class="archive-left">
+        <div class="archive-date">April 21, 2026 <span class="today-badge">Today</span></div>
+        <div class="archive-preview">To level-set · As outlined in · I'd like to flag · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <div class="archive-item" style="opacity:0.4; cursor:default;">
+      <div class="archive-left">
+        <div class="archive-date">April 22, 2026</div>
+        <div class="archive-preview">Coming tomorrow evening…</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </div>
+    <div class="archive-item" style="opacity:0.4; cursor:default;">
+      <div class="archive-left">
+        <div class="archive-date">April 23, 2026</div>
+        <div class="archive-preview">Coming soon…</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT TAB ── -->
+<div id="section-about" class="section">
+  <div class="content" style="padding-top: 24px;">
+    <div class="about-card">
+      <h3>About This Program</h3>
+      <p>A daily habit for building professional English vocabulary and phrasing — designed for non-native speakers working in English-language environments.</p>
+      <p>Five carefully selected phrases land every evening. Each one is practical, work-relevant, and explained with real examples and tone guidance.</p>
+    </div>
+    <div class="about-card">
+      <h3>Phrase Categories</h3>
+      <ul class="category-list">
+        <li><div class="dot"></div>Meeting language — start, navigate, and close meetings</li>
+        <li><div class="dot"></div>Email & report writing — professional written tone</li>
+        <li><div class="dot"></div>Polite disagreement — push back without friction</li>
+        <li><div class="dot"></div>Presenting ideas — structure and deliver arguments</li>
+        <li><div class="dot"></div>Asking for clarification — professionally and confidently</li>
+        <li><div class="dot"></div>Transitions & wrap-up — connect and conclude</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3>How to Use It</h3>
+      <p>Read each phrase in the morning or evening. Try to use at least one in your actual work that day — in a meeting, an email, or a report.</p>
+      <p>The best learning happens when you connect a phrase to a real situation you experienced.</p>
+    </div>
+    <div class="about-card">
+      <h3>How to Add to Home Screen</h3>
+      <p><strong>iPhone:</strong> Open in Safari → tap the Share button → "Add to Home Screen"</p>
+      <p><strong>Android:</strong> Open in Chrome → tap the menu (⋮) → "Add to Home Screen"</p>
+      <p>It will appear as an icon on your phone — just like a real app.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── BOTTOM NAV ── -->
+<div class="bottom-nav">
+  <button class="bottom-nav-item active" id="nav-today" onclick="switchTab('today')">
+    <span class="bottom-nav-icon">📖</span>
+    Today
+  </button>
+  <button class="bottom-nav-item" id="nav-archive" onclick="switchTab('archive')">
+    <span class="bottom-nav-icon">📅</span>
+    Archive
+  </button>
+  <button class="bottom-nav-item" id="nav-about" onclick="switchTab('about')">
+    <span class="bottom-nav-icon">ℹ️</span>
+    About
+  </button>
+</div>
+
+<script>
+  // Set today's date in nav
+  const today = new Date();
+  const options = { month: 'short', day: 'numeric' };
+  document.getElementById('nav-date').textContent = today.toLocaleDateString('en-US', options);
+
+  // Tab switching
+  function switchTab(tab) {
+    ['today', 'archive', 'about'].forEach(t => {
+      document.getElementById('section-' + t).classList.remove('active');
+      document.getElementById('nav-' + t).classList.remove('active');
+    });
+    document.getElementById('section-' + tab).classList.add('active');
+    document.getElementById('nav-' + tab).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  // Progress tracker — marks cards as you scroll past them
+  const cards = document.querySelectorAll('.card[data-phrase]');
+  const seen = new Set();
+
+  function updateProgress() {
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        seen.add(card.dataset.phrase);
+      }
+    });
+    const count = seen.size;
+    document.getElementById('progress-label').textContent = count + ' of 5 phrases reviewed';
+    document.getElementById('progress-fill').style.width = (count / 5 * 100) + '%';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  setTimeout(updateProgress, 300);
+</script>
+
+</body>
+</html>
