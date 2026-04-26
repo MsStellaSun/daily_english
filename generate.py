@@ -65,15 +65,14 @@ def build_dedup_note(past_phrases):
 # ── Build length instruction ───────────────────────────────────────────────
 
 LENGTH_NOTE = (
-    "MIX of LENGTHS required — exactly 3 short and 2 longer:\n"
+    "MIX of LENGTHS required -- exactly 3 short and 2 longer:\n"
     "  - Short (3): flexible CORE EXPRESSIONS, 2-6 words, embeddable in many sentences. "
-    "Think: useful "chunks" or "atoms" people can drop into their own words. "
-    "Examples: \"can't help doing\", \"circle back on\", \"parallel to this\", \"on the same page\", "
-    "\"touch base\", \"per my last email\", \"just wanted to flag\", \"picking up on\", \"wrapping up\".\n"
+    "Think: useful chunks or atoms people can drop into their own words. "
+    "Examples: can't help doing, circle back on, parallel to this, on the same page, "
+    "touch base, per my last email, just wanted to flag, picking up on, wrapping up.\n"
     "  - Longer (2): semi-complete expressions, 8-15 words, still usable as stand-alone phrases. "
-    "Examples: \"I see your point, but let's explore a different angle\", "
-    "\"would you mind elaborating on that point\", "
-    "\"to ensure we're aligned on next steps\"."
+    "Examples: I see your point but let's explore a different angle, "
+    "would you mind elaborating on that point, to ensure we're aligned on next steps."
 )
 
 # ── Prompt ───────────────────────────────────────────────────────────────────
