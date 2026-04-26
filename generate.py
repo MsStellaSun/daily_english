@@ -45,68 +45,41 @@ def load_past_phrases():
             pass
     return []
 
-# ── Build deduplication instruction ────────────────────────────────────────
-
 def build_dedup_note(past_phrases):
     if not past_phrases:
-        return (
-            "IMPORTANT: No phrases have been generated before. "
-            "Choose fresh, high-value expressions that are commonly useful in corporate settings."
-        )
-    # Show last 30 days of phrases (most relevant for avoiding recent repetition)
+        return ("IMPORTANT: Choose fresh expressions. "
+                "Avoid generic phrases like 'Can you share your thoughts' or "
+                "'I see your point but' — these have been overused. Find sharper alternatives.")
     recent = past_phrases[-30:]
     examples = ", ".join(f'"{p}"' for p in recent)
-    return (
-        f"AVOID repeating any of these phrases already used in recent days: "
-        f"{examples}. "
-        f"Do NOT use any phrase above or too-similar variations."
-    )
-
-# ── Build length instruction ───────────────────────────────────────────────
-
-LENGTH_NOTE = (
-    "OUTPUT FORMAT: 3 short phrases (2-6 words each) + 2 longer phrases (8-15 words each).\n"
-    "Short phrases must be NO MORE than 6 words. Think: verb phrases, prepositional chunks, "
-    "idiomatic fragments. DO NOT give full sentences with subject+verb+object.\n"
-    "  Good short examples: can't help doing, circle back on, parallel to this, "
-    "on the same page, touch base, per my last email, just wanted to flag, picking up on,\n"
-    "wrapping up, moving the needle, going forward.\n"
-    "  Bad short examples: Can you share your thoughts? (too complete a sentence)\n"
-    "Longer phrases can be partial sentences but should feel like natural spoken chunks."
-)
+    return (f"AVOID these phrases already used: {examples}. "
+            f"Do not repeat them or very similar variations.")
 
 # ── Prompt ───────────────────────────────────────────────────────────────────
 
 def build_prompt(date_display, past_phrases):
     dedup = build_dedup_note(past_phrases)
-
-    return f"""You are a professional English coach for non-native speakers working in corporate environments.
-
-Today is {date_display}. Generate exactly 5 high-value professional English phrases.
+    return f"""Generate 5 professional English phrases for non-native corporate workers.
 
 {dedup}
 
-{LENGTH_NOTE}
+CRITICAL LENGTH RULES:
+- Phrases 1-3: EXACTLY 2-6 WORDS. These are phrase fragments/chunks, NOT sentences.
+  CORRECT: "can't help doing", "circle back on", "on the same page", "moving the needle"
+  WRONG: "Can you share your thoughts on this?" (too long, full sentence with subject)
+  WRONG: "I see your point" (too short to be useful, also a full sentence)
+- Phrases 4-5: 8-15 words. Semi-complete expressions that can stand alone.
 
-Rotate the categories across the week — pick a balanced mix from:
-- meeting language
-- email/report writing
-- polite disagreement
-- presenting ideas
-- asking for clarification
-- transitions & wrap-up
+CRITICAL CONTENT RULES:
+- Do NOT include subject pronouns (I, you, we, etc.) in short phrases
+- Do NOT write complete sentence structures in short phrases
+- Short phrases should feel like reusable "chunks" or "atoms"
 
-For each phrase return a JSON object with these exact keys:
-- "phrase": the core expression itself (string) — a flexible, stand-alone chunk that can be embedded naturally in many sentences. Keep it compact and memorable. NOT a full sentence with specific subject/object.
-- "category": one of the category names listed above (string, lowercase)
-- "meaning": 1-2 sentences explaining what it means and when to use it (string)
-- "example1": a realistic work-context sentence using the phrase (string, no surrounding quotes)
-- "example2": another realistic work-context sentence (string, no surrounding quotes)
-- "tip": one tone tip — e.g. formal vs informal register, when NOT to use it, or a common mistake to avoid (string)
+Pick 5 different categories from: meeting language, email writing, polite disagreement, presenting ideas, asking for clarification, transitions & wrap-up.
 
-Return ONLY a valid JSON array of 5 objects. No markdown fences, no explanation, no extra text."""
+Output: raw JSON array of 5 objects. Keys: phrase, category, meaning, example1, example2, tip. No markdown fences."""
 
-# ── Call GLM API (pure stdlib, no pip installs needed) ───────────────────────
+# ── Call GLM API ─────────────────────────────────────────────────────────────
 
 api_key = os.environ["GLM_API_KEY"]
 past_phrases = load_past_phrases()
@@ -115,7 +88,8 @@ prompt = build_prompt(DATE_DISPLAY, past_phrases)
 payload = json.dumps({
     "model": MODEL,
     "messages": [{"role": "user", "content": prompt}],
-    "temperature": 0.9,
+    "temperature": 0.3,
+    "max_tokens": 2000,
 }).encode("utf-8")
 
 req = urllib.request.Request(
@@ -133,18 +107,13 @@ with urllib.request.urlopen(req, timeout=60) as resp:
 
 raw = result["choices"][0]["message"]["content"].strip()
 
-# Strip markdown code fences if the model added them anyway
 raw = re.sub(r"^```(?:json)?\s*", "", raw)
 raw = re.sub(r"\s*```$", "", raw)
 
 try:
     phrases = json.loads(raw)
 except json.JSONDecodeError as e:
-    print(f"❌ JSON parse error: {e}")
-    print(f"Raw model output:\n{raw}")
-    raise
-except AssertionError as e:
-    print(f"❌ Assertion error: {e}")
+    print(f"JSON parse error: {e}")
     print(f"Raw model output:\n{raw}")
     raise
 
@@ -185,7 +154,6 @@ def build_cards(phrases):
 # ── Build archive list HTML ───────────────────────────────────────────────────
 
 def build_archive_list():
-    """Scan the archive/ folder and build a list of all past days, newest first."""
     archive_dir = Path("archive")
     entries = ""
 
@@ -244,7 +212,6 @@ index_page = (template
 
 Path("index.html").write_text(index_page, encoding="utf-8")
 
-print(f"✅ Generated phrases for {DATE_DISPLAY}")
-print("Phrases:")
+print(f"Generated phrases for {DATE_DISPLAY}")
 for i, p in enumerate(phrases, 1):
     print(f"  {i}. {p['phrase']}  [{p['category']}]")
