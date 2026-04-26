@@ -65,10 +65,15 @@ def build_dedup_note(past_phrases):
 # ── Build length instruction ───────────────────────────────────────────────
 
 LENGTH_NOTE = (
-    "MIX of LENGTHS required — exactly 3 short phrases and 2 longer phrases:\n"
-    "  - Short phrases (3): single sentence expressions, 3-8 words (e.g. 'Per my last email', 'Let's circle back')\n"
-    "  - Longer phrases (2): multi-part expressions with context, 10-25 words "
-    "(e.g. 'I see your point, but I'd like to offer a different perspective on this')"
+    "MIX of LENGTHS required — exactly 3 short and 2 longer:\n"
+    "  - Short (3): flexible CORE EXPRESSIONS, 2-6 words, embeddable in many sentences. "
+    "Think: useful "chunks" or "atoms" people can drop into their own words. "
+    "Examples: \"can't help doing\", \"circle back on\", \"parallel to this\", \"on the same page\", "
+    "\"touch base\", \"per my last email\", \"just wanted to flag\", \"picking up on\", \"wrapping up\".\n"
+    "  - Longer (2): semi-complete expressions, 8-15 words, still usable as stand-alone phrases. "
+    "Examples: \"I see your point, but let's explore a different angle\", "
+    "\"would you mind elaborating on that point\", "
+    "\"to ensure we're aligned on next steps\"."
 )
 
 # ── Prompt ───────────────────────────────────────────────────────────────────
@@ -93,7 +98,7 @@ Rotate the categories across the week — pick a balanced mix from:
 - transitions & wrap-up
 
 For each phrase return a JSON object with these exact keys:
-- "phrase": the phrase itself (string)
+- "phrase": the core expression itself (string) — a flexible, stand-alone chunk that can be embedded naturally in many sentences. Keep it compact and memorable. NOT a full sentence with specific subject/object.
 - "category": one of the category names listed above (string, lowercase)
 - "meaning": 1-2 sentences explaining what it means and when to use it (string)
 - "example1": a realistic work-context sentence using the phrase (string, no surrounding quotes)
