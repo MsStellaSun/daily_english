@@ -18,12 +18,12 @@ from pathlib import Path
 BEIJING = timezone(timedelta(hours=8))
 now = datetime.now(BEIJING)
 
-DATE_DISPLAY = now.strftime("%B %d, %Y")       # e.g. "April 22, 2026"
-DATE_SLUG    = now.strftime("%Y-%m-%d")         # e.g. "2026-04-22"
+DATE_DISPLAY = now.strftime("%B %d, %Y")
+DATE_SLUG    = now.strftime("%Y-%m-%d")
 
 MODEL = "GLM-4-Flash-250414"
 
-PHRASE_BANK_FILE = Path("phrases_used.json")    # tracks all phrases ever generated
+PHRASE_BANK_FILE = Path("phrases_used.json")
 
 CATEGORY_LABELS = {
     "meeting language":        "Meetings",
@@ -34,7 +34,7 @@ CATEGORY_LABELS = {
     "transitions & wrap-up":   "Transitions",
 }
 
-# ── Load past phrases for deduplication ───────────────────────────────────
+# ── Load past phrases ─────────────────────────────────────────────────────────
 
 def load_past_phrases():
     if PHRASE_BANK_FILE.exists():
@@ -45,39 +45,51 @@ def load_past_phrases():
             pass
     return []
 
-def build_dedup_note(past_phrases):
-    if not past_phrases:
-        return ("IMPORTANT: Choose fresh expressions. "
-                "Avoid generic phrases like 'Can you share your thoughts' or "
-                "'I see your point but' — these have been overused. Find sharper alternatives.")
-    recent = past_phrases[-30:]
-    examples = ", ".join(f'"{p}"' for p in recent)
-    return (f"AVOID these phrases already used: {examples}. "
-            f"Do not repeat them or very similar variations.")
-
-# ── Prompt ───────────────────────────────────────────────────────────────────
+# ── Build prompt: ask for 10 candidates, we pick 5 ──────────────────────────
 
 def build_prompt(date_display, past_phrases):
-    dedup = build_dedup_note(past_phrases)
-    return f"""Generate 5 professional English phrases for non-native corporate workers.
+    dedup = ""
+    if past_phrases:
+        recent = past_phrases[-30:]
+        dedup = "Avoid repeating these: " + ", ".join(f'"{p}"' for p in recent) + ".\n"
 
+    return f"""Generate exactly 10 candidate English phrases for professional corporate communication.
+
+Today: {date_display}.
 {dedup}
 
-CRITICAL LENGTH RULES:
-- Phrases 1-3: EXACTLY 2-6 WORDS. These are phrase fragments/chunks, NOT sentences.
-  CORRECT: "can't help doing", "circle back on", "on the same page", "moving the needle"
-  WRONG: "Can you share your thoughts on this?" (too long, full sentence with subject)
-  WRONG: "I see your point" (too short to be useful, also a full sentence)
-- Phrases 4-5: 8-15 words. Semi-complete expressions that can stand alone.
+Generate a mix of:
+- SHORT fragments (1-5 words): idiomatic chunks, verb phrases, prepositional phrases. Examples: "can't help wondering", "circle back on", "on the same page", "moving the needle", "touch base", "per my last email", "just wanted to flag", "picking up on", "wrapping up", "going forward"
+- LONGER phrases (6-15 words): more complete expressions with some context. Examples: "I see your point, but let's explore a different angle", "would you mind elaborating on that point"
 
-CRITICAL CONTENT RULES:
-- Do NOT include subject pronouns (I, you, we, etc.) in short phrases
-- Do NOT write complete sentence structures in short phrases
-- Short phrases should feel like reusable "chunks" or "atoms"
+Return a JSON object (not array): {{"candidates": [{{"phrase": "...", "category": "...", "meaning": "...", "example1": "...", "example2": "...", "tip": "..."}}]}}
+Return ONLY this JSON. No markdown fences. No explanation."""
 
-Pick 5 different categories from: meeting language, email writing, polite disagreement, presenting ideas, asking for clarification, transitions & wrap-up.
+# ── Pick best 5 from candidates ───────────────────────────────────────────────
 
-Output: raw JSON array of 5 objects. Keys: phrase, category, meaning, example1, example2, tip. No markdown fences."""
+def pick_best(candidates):
+    chosen = []
+
+    # First pick 3 shortest (1-5 words, prefer fragments without subject)
+    short = [c for c in candidates if 1 <= len(c["phrase"].split()) <= 5]
+    # Prefer phrases without subject pronouns at start
+    short.sort(key=lambda c: (
+        0 if re.match(r"^(i|you|we|they|it|he|she|this|that)", c["phrase"].lower().split()[0]) else 1,
+        len(c["phrase"].split())
+    ))
+    chosen.extend(short[:3])
+
+    # Then pick 2 medium (6-12 words)
+    long_list = [c for c in candidates if 6 <= len(c["phrase"].split()) <= 12]
+    long_list.sort(key=lambda c: len(c["phrase"].split()))
+    chosen.extend(long_list[:2])
+
+    # If we don't have enough, fill from remaining
+    if len(chosen) < 5:
+        remaining = [c for c in candidates if c not in chosen]
+        chosen.extend(remaining[:5-len(chosen)])
+
+    return chosen[:5]
 
 # ── Call GLM API ─────────────────────────────────────────────────────────────
 
@@ -88,8 +100,8 @@ prompt = build_prompt(DATE_DISPLAY, past_phrases)
 payload = json.dumps({
     "model": MODEL,
     "messages": [{"role": "user", "content": prompt}],
-    "temperature": 0.3,
-    "max_tokens": 2000,
+    "temperature": 0.5,
+    "max_tokens": 2500,
 }).encode("utf-8")
 
 req = urllib.request.Request(
@@ -111,13 +123,26 @@ raw = re.sub(r"^```(?:json)?\s*", "", raw)
 raw = re.sub(r"\s*```$", "", raw)
 
 try:
-    phrases = json.loads(raw)
+    data = json.loads(raw)
 except json.JSONDecodeError as e:
     print(f"JSON parse error: {e}")
-    print(f"Raw model output:\n{raw}")
+    print(f"Raw output:\n{raw}")
     raise
 
-assert len(phrases) == 5, f"Expected 5 phrases, got {len(phrases)}"
+candidates = data.get("candidates", [])
+# Handle if model returned array directly
+if isinstance(data, list):
+    candidates = data
+
+print(f"Generated {len(candidates)} candidates")
+for c in candidates:
+    wc = len(c["phrase"].split())
+    print(f"  [{wc}w] {c['phrase']}")
+
+phrases = pick_best(candidates)
+print(f"\nSelected {len(phrases)} phrases:")
+for i, p in enumerate(phrases, 1):
+    print(f"  {i}. [{len(p['phrase'].split())}w] {p['phrase']}")
 
 # ── Update phrase bank ───────────────────────────────────────────────────────
 
@@ -156,7 +181,6 @@ def build_cards(phrases):
 def build_archive_list():
     archive_dir = Path("archive")
     entries = ""
-
     if archive_dir.exists():
         files = sorted(archive_dir.glob("*.html"), reverse=True)
         for f in files:
@@ -166,14 +190,11 @@ def build_archive_list():
                 label = d.strftime("%B %d, %Y")
             except ValueError:
                 continue
-
             is_today = slug == DATE_SLUG
             badge = '<span class="today-badge">Today</span>' if is_today else ""
-
             content = f.read_text(encoding="utf-8")
             preview_phrases = re.findall(r'<div class="phrase">(.*?)</div>', content)
             preview = " · ".join(preview_phrases[:3]) + (" · …" if len(preview_phrases) > 3 else "")
-
             entries += f"""
     <a href="archive/{slug}.html" class="archive-item">
       <div class="archive-left">
@@ -182,10 +203,8 @@ def build_archive_list():
       </div>
       <div class="archive-arrow">›</div>
     </a>"""
-
     if not entries:
         entries = '<p style="color:#aaa;font-size:14px;text-align:center;padding:40px 0;">No past entries yet.</p>'
-
     return entries
 
 # ── Render & save ─────────────────────────────────────────────────────────────
@@ -212,6 +231,4 @@ index_page = (template
 
 Path("index.html").write_text(index_page, encoding="utf-8")
 
-print(f"Generated phrases for {DATE_DISPLAY}")
-for i, p in enumerate(phrases, 1):
-    print(f"  {i}. {p['phrase']}  [{p['category']}]")
+print(f"\nGenerated for {DATE_DISPLAY}")
