@@ -65,14 +65,14 @@ def build_dedup_note(past_phrases):
 # ── Build length instruction ───────────────────────────────────────────────
 
 LENGTH_NOTE = (
-    "MIX of LENGTHS required -- exactly 3 short and 2 longer:\n"
-    "  - Short (3): flexible CORE EXPRESSIONS, 2-6 words, embeddable in many sentences. "
-    "Think: useful chunks or atoms people can drop into their own words. "
-    "Examples: can't help doing, circle back on, parallel to this, on the same page, "
-    "touch base, per my last email, just wanted to flag, picking up on, wrapping up.\n"
-    "  - Longer (2): semi-complete expressions, 8-15 words, still usable as stand-alone phrases. "
-    "Examples: I see your point but let's explore a different angle, "
-    "would you mind elaborating on that point, to ensure we're aligned on next steps."
+    "OUTPUT FORMAT: 3 short phrases (2-6 words each) + 2 longer phrases (8-15 words each).\n"
+    "Short phrases must be NO MORE than 6 words. Think: verb phrases, prepositional chunks, "
+    "idiomatic fragments. DO NOT give full sentences with subject+verb+object.\n"
+    "  Good short examples: can't help doing, circle back on, parallel to this, "
+    "on the same page, touch base, per my last email, just wanted to flag, picking up on,\n"
+    "wrapping up, moving the needle, going forward.\n"
+    "  Bad short examples: Can you share your thoughts? (too complete a sentence)\n"
+    "Longer phrases can be partial sentences but should feel like natural spoken chunks."
 )
 
 # ── Prompt ───────────────────────────────────────────────────────────────────
