@@ -196,7 +196,7 @@ def build_archive_list():
             preview_phrases = re.findall(r'<div class="phrase">(.*?)</div>', content)
             preview = " · ".join(preview_phrases[:3]) + (" · …" if len(preview_phrases) > 3 else "")
             entries += f"""
-    <a href="archive/{slug}.html" class="archive-item">
+    <a href="/daily_english/archive/{slug}.html" class="archive-item">
       <div class="archive-left">
         <div class="archive-date">{label} {badge}</div>
         <div class="archive-preview">{preview}</div>
