@@ -21,7 +21,7 @@ now = datetime.now(BEIJING)
 DATE_DISPLAY = now.strftime("%B %d, %Y")       # e.g. "April 22, 2026"
 DATE_SLUG    = now.strftime("%Y-%m-%d")         # e.g. "2026-04-22"
 
-MODEL = "MiniMax-Text-01"
+MODEL = "MiniMax-M2.5"
 
 CATEGORY_LABELS = {
     "meeting language":        "Meetings",
