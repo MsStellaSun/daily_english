@@ -138,7 +138,17 @@ raw = result["choices"][0]["message"]["content"].strip()
 raw = re.sub(r"^```(?:json)?\s*", "", raw)
 raw = re.sub(r"\s*```$", "", raw)
 
-phrases = json.loads(raw)
+try:
+    phrases = json.loads(raw)
+except json.JSONDecodeError as e:
+    print(f"❌ JSON parse error: {e}")
+    print(f"Raw model output:\n{raw}")
+    raise
+except AssertionError as e:
+    print(f"❌ Assertion error: {e}")
+    print(f"Raw model output:\n{raw}")
+    raise
+
 assert len(phrases) == 5, f"Expected 5 phrases, got {len(phrases)}"
 
 # ── Update phrase bank ───────────────────────────────────────────────────────
