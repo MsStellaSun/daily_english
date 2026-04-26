@@ -1,9 +1,9 @@
 """
 Daily Professional English Phrases Generator
-Uses MiniMax API via direct HTTP — no third-party packages needed.
+Uses ZhipuAI (GLM) API via direct HTTP — no third-party packages needed.
 
 GitHub Secret needed:
-  GLM_API_KEY — your MiniMax API key
+  GLM_API_KEY — your ZhipuAI API key from https://open.bigmodel.cn
 """
 
 import json
@@ -23,6 +23,8 @@ DATE_SLUG    = now.strftime("%Y-%m-%d")         # e.g. "2026-04-22"
 
 MODEL = "GLM-4-Flash-250414"
 
+PHRASE_BANK_FILE = Path("phrases_used.json")    # tracks all phrases ever generated
+
 CATEGORY_LABELS = {
     "meeting language":        "Meetings",
     "email/report writing":    "Reports & Writing",
@@ -32,13 +34,57 @@ CATEGORY_LABELS = {
     "transitions & wrap-up":   "Transitions",
 }
 
+# ── Load past phrases for deduplication ───────────────────────────────────
+
+def load_past_phrases():
+    if PHRASE_BANK_FILE.exists():
+        try:
+            data = json.loads(PHRASE_BANK_FILE.read_text(encoding="utf-8"))
+            return [p.lower().strip() for p in data.get("phrases", [])]
+        except (json.JSONDecodeError, KeyError):
+            pass
+    return []
+
+# ── Build deduplication instruction ────────────────────────────────────────
+
+def build_dedup_note(past_phrases):
+    if not past_phrases:
+        return (
+            "IMPORTANT: No phrases have been generated before. "
+            "Choose fresh, high-value expressions that are commonly useful in corporate settings."
+        )
+    # Show last 30 days of phrases (most relevant for avoiding recent repetition)
+    recent = past_phrases[-30:]
+    examples = ", ".join(f'"{p}"' for p in recent)
+    return (
+        f"AVOID repeating any of these phrases already used in recent days: "
+        f"{examples}. "
+        f"Do NOT use any phrase above or too-similar variations."
+    )
+
+# ── Build length instruction ───────────────────────────────────────────────
+
+LENGTH_NOTE = (
+    "MIX of LENGTHS required — exactly 3 short phrases and 2 longer phrases:\n"
+    "  - Short phrases (3): single sentence expressions, 3-8 words (e.g. 'Per my last email', 'Let's circle back')\n"
+    "  - Longer phrases (2): multi-part expressions with context, 10-25 words "
+    "(e.g. 'I see your point, but I'd like to offer a different perspective on this')"
+)
+
 # ── Prompt ───────────────────────────────────────────────────────────────────
 
-PROMPT = f"""You are a professional English coach for non-native speakers working in corporate environments.
+def build_prompt(date_display, past_phrases):
+    dedup = build_dedup_note(past_phrases)
 
-Today is {DATE_DISPLAY}. Generate exactly 5 high-value professional English phrases.
+    return f"""You are a professional English coach for non-native speakers working in corporate environments.
 
-Rotate the categories across the week — today pick a balanced mix from:
+Today is {date_display}. Generate exactly 5 high-value professional English phrases.
+
+{dedup}
+
+{LENGTH_NOTE}
+
+Rotate the categories across the week — pick a balanced mix from:
 - meeting language
 - email/report writing
 - polite disagreement
@@ -59,10 +105,12 @@ Return ONLY a valid JSON array of 5 objects. No markdown fences, no explanation,
 # ── Call GLM API (pure stdlib, no pip installs needed) ───────────────────────
 
 api_key = os.environ["GLM_API_KEY"]
+past_phrases = load_past_phrases()
+prompt = build_prompt(DATE_DISPLAY, past_phrases)
 
 payload = json.dumps({
     "model": MODEL,
-    "messages": [{"role": "user", "content": PROMPT}],
+    "messages": [{"role": "user", "content": prompt}],
     "temperature": 0.9,
 }).encode("utf-8")
 
@@ -87,6 +135,13 @@ raw = re.sub(r"\s*```$", "", raw)
 
 phrases = json.loads(raw)
 assert len(phrases) == 5, f"Expected 5 phrases, got {len(phrases)}"
+
+# ── Update phrase bank ───────────────────────────────────────────────────────
+
+phrase_bank = {"phrases": past_phrases}
+for p in phrases:
+    phrase_bank["phrases"].append(p["phrase"].lower().strip())
+PHRASE_BANK_FILE.write_text(json.dumps(phrase_bank, ensure_ascii=False, indent=2), encoding="utf-8")
 
 # ── Build phrase cards HTML ───────────────────────────────────────────────────
 
@@ -123,7 +178,7 @@ def build_archive_list():
     if archive_dir.exists():
         files = sorted(archive_dir.glob("*.html"), reverse=True)
         for f in files:
-            slug = f.stem                          # e.g. "2026-04-22"
+            slug = f.stem
             try:
                 d = datetime.strptime(slug, "%Y-%m-%d")
                 label = d.strftime("%B %d, %Y")
@@ -133,7 +188,6 @@ def build_archive_list():
             is_today = slug == DATE_SLUG
             badge = '<span class="today-badge">Today</span>' if is_today else ""
 
-            # Read first phrase name from archive file for preview
             content = f.read_text(encoding="utf-8")
             preview_phrases = re.findall(r'<div class="phrase">(.*?)</div>', content)
             preview = " · ".join(preview_phrases[:3]) + (" · …" if len(preview_phrases) > 3 else "")
@@ -157,9 +211,8 @@ def build_archive_list():
 template = Path("template.html").read_text(encoding="utf-8")
 
 cards_html   = build_cards(phrases)
-archive_html = build_archive_list()   # build before saving today's archive
+archive_html = build_archive_list()
 
-# Save today as a standalone archive page (no archive list inside it)
 archive_page = (template
     .replace("{{DATE}}", DATE_DISPLAY)
     .replace("{{CARDS}}", cards_html)
@@ -168,10 +221,8 @@ archive_page = (template
 Path("archive").mkdir(exist_ok=True)
 Path(f"archive/{DATE_SLUG}.html").write_text(archive_page, encoding="utf-8")
 
-# Rebuild archive list now that today's file exists
 archive_html = build_archive_list()
 
-# Save index.html (the main site)
 index_page = (template
     .replace("{{DATE}}", DATE_DISPLAY)
     .replace("{{CARDS}}", cards_html)
