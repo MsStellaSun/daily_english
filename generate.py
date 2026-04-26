@@ -3,7 +3,7 @@ Daily Professional English Phrases Generator
 Uses MiniMax API via direct HTTP — no third-party packages needed.
 
 GitHub Secret needed:
-  MINIMAX_API_KEY — your MiniMax API key
+  GLM_API_KEY — your MiniMax API key
 """
 
 import json
@@ -21,7 +21,7 @@ now = datetime.now(BEIJING)
 DATE_DISPLAY = now.strftime("%B %d, %Y")       # e.g. "April 22, 2026"
 DATE_SLUG    = now.strftime("%Y-%m-%d")         # e.g. "2026-04-22"
 
-MODEL = "MiniMax-M2.5"
+MODEL = "GLM-4-Flash-250414"
 
 CATEGORY_LABELS = {
     "meeting language":        "Meetings",
@@ -58,7 +58,7 @@ Return ONLY a valid JSON array of 5 objects. No markdown fences, no explanation,
 
 # ── Call GLM API (pure stdlib, no pip installs needed) ───────────────────────
 
-api_key = os.environ["MINIMAX_API_KEY"]
+api_key = os.environ["GLM_API_KEY"]
 
 payload = json.dumps({
     "model": MODEL,
@@ -67,7 +67,7 @@ payload = json.dumps({
 }).encode("utf-8")
 
 req = urllib.request.Request(
-    "https://api.minimax.chat/v1/chat/completions",
+    "https://open.bigmodel.cn/api/paas/v4/chat/completions",
     data=payload,
     headers={
         "Content-Type": "application/json",

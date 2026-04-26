@@ -15,7 +15,7 @@ jobs:
 
       - name: Generate today's phrases
         env:
-          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          GLM_API_KEY: ${{ secrets.GLM_API_KEY }}
         run: python generate.py
 
       - name: Commit and push
