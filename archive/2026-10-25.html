@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Professional English — October 25, 2026</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c08a50;
+      --gold-light: #f5ede0;
+      --bg: #f5f4f0;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #888;
+      --subtle: #f0ede8;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--subtle);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-brand { font-size: 15px; font-weight: 700; color: var(--text); letter-spacing: -0.01em; }
+    .nav-brand span { color: var(--gold); }
+    .nav-date { font-size: 12px; color: var(--muted); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      color: #fff;
+      padding: 36px 20px 32px;
+      text-align: center;
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .hero h1 { font-size: 26px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+
+    .hero p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      max-width: 320px;
+      margin: 0 auto 20px;
+      line-height: 1.6;
+    }
+
+    .streak-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(192,138,80,0.18);
+      border: 1px solid rgba(192,138,80,0.4);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: #e8c48a;
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      background: #fff;
+      border-bottom: 1px solid var(--subtle);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      flex-shrink: 0;
+      padding: 13px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+
+    .tab.active { color: var(--text); border-bottom-color: var(--gold); font-weight: 600; }
+
+    /* ── CONTENT ── */
+    .content {
+      padding: 20px 16px 60px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* ── PHRASE CARDS ── */
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .card-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+
+    .card-number {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .card-tag {
+      font-size: 10px;
+      background: var(--gold-light);
+      color: var(--gold);
+      border-radius: 6px;
+      padding: 2px 8px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .phrase { font-size: 21px; font-weight: 800; color: var(--text); margin-bottom: 10px; line-height: 1.25; }
+
+    .meaning {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--subtle);
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #bbb;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .examples { margin-bottom: 14px; }
+
+    .example {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+      padding: 10px 12px 10px 14px;
+      background: #faf9f6;
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+
+    .tip {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.65;
+      background: var(--gold-light);
+      border-radius: 10px;
+      padding: 11px 13px;
+    }
+
+    .tip strong { color: var(--gold); }
+
+    /* ── ARCHIVE ── */
+    .archive-item {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .archive-date { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .archive-preview { font-size: 12px; color: var(--muted); line-height: 1.4; }
+    .archive-arrow { font-size: 18px; color: #ccc; }
+
+    .today-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 5px;
+      padding: 2px 7px;
+      margin-left: 6px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    /* ── ABOUT ── */
+    .about-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 22px 20px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .about-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+
+    .about-card p { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 10px; }
+    .about-card p:last-child { margin-bottom: 0; }
+
+    .category-list { list-style: none; margin-top: 6px; }
+
+    .category-list li {
+      font-size: 13px;
+      color: #555;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--subtle);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .category-list li:last-child { border-bottom: none; }
+
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+    /* ── BOTTOM NAV ── */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      border-top: 1px solid var(--subtle);
+      display: flex;
+      padding: 10px 0 14px;
+      z-index: 10;
+    }
+
+    .bottom-nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      font-size: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      transition: color 0.15s;
+    }
+
+    .bottom-nav-item.active { color: var(--gold); }
+    .bottom-nav-icon { font-size: 20px; line-height: 1; }
+
+    .progress-bar {
+      background: var(--subtle);
+      border-radius: 8px;
+      height: 6px;
+      margin: 6px 0 14px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), #e8a862);
+      border-radius: 8px;
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+
+    .progress-label { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Daily <span>English</span></div>
+  <div class="nav-date">October 25, 2026</div>
+</nav>
+
+<!-- ── TODAY TAB ── -->
+<div id="section-today" class="section active">
+  <div class="hero">
+    <div class="hero-label">Today's Practice</div>
+    <h1>5 Professional Phrases</h1>
+    <p>Read, understand, and try using one in your work today.</p>
+    <div class="streak-badge">🔥 Keep the streak going!</div>
+  </div>
+
+  <div class="content">
+    <div class="progress-label" id="progress-label">0 of 5 phrases reviewed</div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+    
+    <div class="card" data-phrase="1">
+      <div class="card-meta">
+        <div class="card-number">01</div>
+        <div class="card-tag">short fragment</div>
+      </div>
+      <div class="phrase">touch base</div>
+      <div class="meaning">make contact or have a brief discussion</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"Let's touch base tomorrow to discuss the report."</div>
+        <div class="example">"I'll touch base with the team to confirm attendance."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip">A casual and common way to suggest a brief communication.</div>
+    </div>
+    <div class="card" data-phrase="2">
+      <div class="card-meta">
+        <div class="card-number">02</div>
+        <div class="card-tag">short fragment</div>
+      </div>
+      <div class="phrase">wrapping up</div>
+      <div class="meaning">indicating the conclusion of an activity</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"Wrapping up the meeting, please review the minutes."</div>
+        <div class="example">"Wrapping up the project, we will submit the final report tomorrow."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip">A polite way to signal the end of a discussion or task.</div>
+    </div>
+    <div class="card" data-phrase="3">
+      <div class="card-meta">
+        <div class="card-number">03</div>
+        <div class="card-tag">short fragment</div>
+      </div>
+      <div class="phrase">going forward</div>
+      <div class="meaning">from this point in time onward</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"Going forward, all reports must be submitted by Friday."</div>
+        <div class="example">"Going forward, we will implement the new procedures."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip">Use to introduce new policies or changes that take effect now.</div>
+    </div>
+    <div class="card" data-phrase="4">
+      <div class="card-meta">
+        <div class="card-number">04</div>
+        <div class="card-tag">short fragment</div>
+      </div>
+      <div class="phrase">can't help wondering</div>
+      <div class="meaning">expressing curiosity or疑虑 about something</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"Can't help wondering if the project deadline is realistic."</div>
+        <div class="example">"Can't help wondering how this decision will impact our team."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip">Use to introduce a thoughtful or slightly skeptical question.</div>
+    </div>
+    <div class="card" data-phrase="5">
+      <div class="card-meta">
+        <div class="card-number">05</div>
+        <div class="card-tag">short fragment</div>
+      </div>
+      <div class="phrase">circle back on</div>
+      <div class="meaning">suggesting a follow-up discussion at a later time</div>
+      <div class="section-label">Examples</div>
+      <div class="examples">
+        <div class="example">"Let's circle back on the budget proposal next week."</div>
+        <div class="example">"Please circle back on this matter after you speak with the client."</div>
+      </div>
+      <div class="section-label">Tone Tip</div>
+      <div class="tip">A polite way to request a later discussion without setting a specific date.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ARCHIVE TAB ── -->
+<div id="section-archive" class="section">
+  <div class="content" style="padding-top: 24px;">
+    
+    <a href="/daily_english/archive/2026-10-24.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 24, 2026 </div>
+        <div class="archive-preview">Can't help wondering · Touch base by Thursday · Just wanted to flag · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-23.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 23, 2026 </div>
+        <div class="archive-preview">touch base tomorrow · per my last email · due by end of day · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-22.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 22, 2026 </div>
+        <div class="archive-preview">Circle back on · Moving the needle · Touch base on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-21.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 21, 2026 </div>
+        <div class="archive-preview">Flag this compliance concern immediately. · Review contract terms before signing. · Track progress monthly going forward. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-20.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 20, 2026 </div>
+        <div class="archive-preview">moving the needle · on the same page · flag this compliance concern immediately · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-19.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 19, 2026 </div>
+        <div class="archive-preview">touch base on · flag this issue · confirm by eod · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-18.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 18, 2026 </div>
+        <div class="archive-preview">Track progress monthly going forward. · Confirm the client's availability by tomorrow. · Review the contract terms before approval. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-17.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 17, 2026 </div>
+        <div class="archive-preview">Confirm by EOD · Flag this issue · Track progress weekly · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-16.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 16, 2026 </div>
+        <div class="archive-preview">Per my last email. · Can you confirm by EOD? · Let's sync up next Tuesday. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-15.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 15, 2026 </div>
+        <div class="archive-preview">touch base · wrapping up · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-14.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 14, 2026 </div>
+        <div class="archive-preview">Wrapping up the Q3 performance review. · Going forward, let's track progress weekly. · Can you confirm the delivery by end of day? · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-13.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 13, 2026 </div>
+        <div class="archive-preview">can't help wondering · circle back on · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-12.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 12, 2026 </div>
+        <div class="archive-preview">Can't help wondering · Moving the needle · On the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-11.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 11, 2026 </div>
+        <div class="archive-preview">touch base soon · moving the needle · picking up on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-10.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 10, 2026 </div>
+        <div class="archive-preview">We'll follow up next month · I'll review the attached report · Looking forward to our discussion · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-09.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 09, 2026 </div>
+        <div class="archive-preview">going forward · circle back on · touch base soon · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-08.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 08, 2026 </div>
+        <div class="archive-preview">We appreciate your continued support · Let's explore alternative solutions · Provide the report by EOD · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-07.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 07, 2026 </div>
+        <div class="archive-preview">We appreciate your input · Touch base soon · Provide documents by tomorrow · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-06.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 06, 2026 </div>
+        <div class="archive-preview">review attached document · provide updates by tomorrow · discuss further next week · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-05.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 05, 2026 </div>
+        <div class="archive-preview">We appreciate your input · We'll follow up next week · Please review the attached proposal · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-04.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 04, 2026 </div>
+        <div class="archive-preview">per my last email · on the same page · confirm by close of business · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-03.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 03, 2026 </div>
+        <div class="archive-preview">moving the needle · picking up on · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-02.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 02, 2026 </div>
+        <div class="archive-preview">Touch base · Wrapping up · Going forward · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-10-01.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">October 01, 2026 </div>
+        <div class="archive-preview">confirm by EOD · touch base soon · share insights on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-30.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 30, 2026 </div>
+        <div class="archive-preview">Touch base shortly · Confirming delivery by Friday · Flagging potential risks for review · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-29.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 29, 2026 </div>
+        <div class="archive-preview">Touch base shortly · Provide the documents by EOD · Confirm the delivery by Friday · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-28.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 28, 2026 </div>
+        <div class="archive-preview">Touch base shortly · Provide the documents by EOD · Confirm the delivery by Friday · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-27.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 27, 2026 </div>
+        <div class="archive-preview">touch base shortly · provide the documents by EOD · confirm the delivery by Friday · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-26.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 26, 2026 </div>
+        <div class="archive-preview">Please provide the requested documents by end of day. · Let's discuss the Q4 projections in the upcoming meeting. · Could you share your insights on the market trends? · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-25.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 25, 2026 </div>
+        <div class="archive-preview">moving the needle · on the same page · per my last email · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-24.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 24, 2026 </div>
+        <div class="archive-preview">can't help wondering. · picking up on. · provide further details. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-23.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 23, 2026 </div>
+        <div class="archive-preview">Explore alternative solutions. · Provide further details. · Can't help wondering. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-22.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 22, 2026 </div>
+        <div class="archive-preview">Explore alternative solutions. · Touch base next week. · Provide an update by EOD. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-21.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 21, 2026 </div>
+        <div class="archive-preview">touch base ASAP · provide further details · explore alternative solutions · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-20.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 20, 2026 </div>
+        <div class="archive-preview">touch base · going forward · wrapping up · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-19.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 19, 2026 </div>
+        <div class="archive-preview">wrapping up · going forward · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-18.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 18, 2026 </div>
+        <div class="archive-preview">circle back on · moving the needle · highlighting key takeaways · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-17.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 17, 2026 </div>
+        <div class="archive-preview">Picking up on · Highlighting key takeaways · Moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-16.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 16, 2026 </div>
+        <div class="archive-preview">going forward · can't help wondering · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-15.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 15, 2026 </div>
+        <div class="archive-preview">shedding light on the details · can't help wondering · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-14.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 14, 2026 </div>
+        <div class="archive-preview">Shedding light on the details · Taking the initiative · Highlighting key takeaways · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-13.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 13, 2026 </div>
+        <div class="archive-preview">proactive approach · touch base · due for review · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-12.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 12, 2026 </div>
+        <div class="archive-preview">Touch base · Wrapping up · Going forward · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-11.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 11, 2026 </div>
+        <div class="archive-preview">touch base · wrapping up · going forward · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-10.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 10, 2026 </div>
+        <div class="archive-preview">proactive approach · touch base shortly · due for review · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-09.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 09, 2026 </div>
+        <div class="archive-preview">proactive approach · due for review · key performance indicators · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-08.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 08, 2026 </div>
+        <div class="archive-preview">this requires stakeholder input · can't help wondering · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-07.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 07, 2026 </div>
+        <div class="archive-preview">This requires stakeholder input. · Touch base tomorrow. · Going forward, let's prioritize X. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-06.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 06, 2026 </div>
+        <div class="archive-preview">This requires stakeholder input · We'll follow up next week · Touch base tomorrow · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-05.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 05, 2026 </div>
+        <div class="archive-preview">This requires stakeholder input · We'll follow up next week · This supports our strategic objectives · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-04.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 04, 2026 </div>
+        <div class="archive-preview">Moving the needle. · Can't help wondering. · Circle back on. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-03.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 03, 2026 </div>
+        <div class="archive-preview">Moving the needle · On the same page · Per my last email · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-02.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 02, 2026 </div>
+        <div class="archive-preview">Moving the needle · Per my last email · On the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-09-01.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">September 01, 2026 </div>
+        <div class="archive-preview">Has the project been approved? · Can you clarify the deadline? · Let's align on the next steps. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-31.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 31, 2026 </div>
+        <div class="archive-preview">Per my last email · Picking up on your point · Going forward, we should prioritize · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-30.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 30, 2026 </div>
+        <div class="archive-preview">going forward · touch base · picking up on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-29.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 29, 2026 </div>
+        <div class="archive-preview">Touch base · Going forward · Picking up on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-28.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 28, 2026 </div>
+        <div class="archive-preview">Touch base · Wrapping up · Going forward · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-27.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 27, 2026 </div>
+        <div class="archive-preview">Touch base · Can't help wondering · Circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-26.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 26, 2026 </div>
+        <div class="archive-preview">touch base · moving the needle · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-25.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 25, 2026 </div>
+        <div class="archive-preview">let's discuss the upcoming project timeline · please provide the updated report by eod · could you share the Q3 financial results · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-24.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 24, 2026 </div>
+        <div class="archive-preview">Can't help wondering · Let's circle back on · Looking forward to collaborating · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-23.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 23, 2026 </div>
+        <div class="archive-preview">Let's discuss the Q4 strategic priorities. · Let's review the contract terms together. · Please provide the final approval by EOD. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-22.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 22, 2026 </div>
+        <div class="archive-preview">I appreciate your input · Let's ensure alignment · Looking forward to collaborating · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-21.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 21, 2026 </div>
+        <div class="archive-preview">Let's discuss the Q3 projections. · Let's review the contract terms. · Has the proposal been approved? · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-20.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 20, 2026 </div>
+        <div class="archive-preview">Can we expedite this by EOD? · Let's align on the immediate next steps. · Per my last email, here’s the updated data. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-19.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 19, 2026 </div>
+        <div class="archive-preview">touch base · moving the needle · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-18.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 18, 2026 </div>
+        <div class="archive-preview">We should prioritize this task. · Checking in on the progress. · Could you share the updated timeline? · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-17.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 17, 2026 </div>
+        <div class="archive-preview">Can we expedite this by Friday? · Let's summarize the key takeaways here. · I'd appreciate your input on this draft. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-16.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 16, 2026 </div>
+        <div class="archive-preview">wrapping up · going forward · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-15.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 15, 2026 </div>
+        <div class="archive-preview">wrapping up · going forward · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-14.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 14, 2026 </div>
+        <div class="archive-preview">Can we expedite this by Friday? · Let's summarize the key takeaways here. · Let's defer this discussion to the next meeting. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-13.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 13, 2026 </div>
+        <div class="archive-preview">Going forward · Can't help wondering · Review and approve · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-12.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 12, 2026 </div>
+        <div class="archive-preview">touch base · flag potential risks · review and approve · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-11.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 11, 2026 </div>
+        <div class="archive-preview">touch base · provide detailed analytics · flag potential risks · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-10.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 10, 2026 </div>
+        <div class="archive-preview">provide detailed analytics · flag potential risks · review and approve · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-09.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 09, 2026 </div>
+        <div class="archive-preview">Flag potential risks · Review and approve · Discuss key metrics · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-08.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 08, 2026 </div>
+        <div class="archive-preview">circle back on · moving the needle · touch base asap · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-06.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 06, 2026 </div>
+        <div class="archive-preview">touch base ASAP · moving the needle · picking up on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-05.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 05, 2026 </div>
+        <div class="archive-preview">picking up on · moving the needle · per my last email · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-04.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 04, 2026 </div>
+        <div class="archive-preview">wrapping up · going forward · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-03.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 03, 2026 </div>
+        <div class="archive-preview">touch base · going forward · high-level overview · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-02.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 02, 2026 </div>
+        <div class="archive-preview">high-level overview · going forward · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-08-01.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">August 01, 2026 </div>
+        <div class="archive-preview">going forward · high-level overview · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-31.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 31, 2026 </div>
+        <div class="archive-preview">due diligence · going forward · high-level overview · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-30.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 30, 2026 </div>
+        <div class="archive-preview">I can't help wondering about · Let's circle back on · Seek stakeholder input on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-29.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 29, 2026 </div>
+        <div class="archive-preview">Touch base asap · Flag potential risks · Seek stakeholder input · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-28.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 28, 2026 </div>
+        <div class="archive-preview">Seek stakeholder input. · Flag potential risks. · Touch base asap. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-26.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 26, 2026 </div>
+        <div class="archive-preview">moving the needle · touch base asap · flag potential risks · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-25.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 25, 2026 </div>
+        <div class="archive-preview">Touch base ASAP · Flag potential risks · Seek stakeholder input · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-24.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 24, 2026 </div>
+        <div class="archive-preview">Moving the needle. · Just wanted to flag · Per our last discussion · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-23.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 23, 2026 </div>
+        <div class="archive-preview">Can we expedite this process? · Looking forward to your feedback. · Please ensure all documentation is submitted. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-22.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 22, 2026 </div>
+        <div class="archive-preview">We should explore alternative solutions. · This is a high-impact opportunity. · Can we expedite this process? · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-21.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 21, 2026 </div>
+        <div class="archive-preview">wrapping up · going forward · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-20.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 20, 2026 </div>
+        <div class="archive-preview">We should consider all options · Per our last discussion · Looking forward to your feedback · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-19.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 19, 2026 </div>
+        <div class="archive-preview">we should prioritize client satisfaction. · picking up on · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-18.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 18, 2026 </div>
+        <div class="archive-preview">we should prioritize client satisfaction · touch base · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-17.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 17, 2026 </div>
+        <div class="archive-preview">touch base · going forward · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-16.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 16, 2026 </div>
+        <div class="archive-preview">touch base · going forward · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-15.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 15, 2026 </div>
+        <div class="archive-preview">We should prioritize client satisfaction. · Can we expedite this process? · Let's align on the key performance indicators. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-14.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 14, 2026 </div>
+        <div class="archive-preview">Going forward · Wrapping up · Can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-13.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 13, 2026 </div>
+        <div class="archive-preview">can't help wondering · circle back on · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-12.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 12, 2026 </div>
+        <div class="archive-preview">Picking up on. · Moving the needle. · Per my last email. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-11.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 11, 2026 </div>
+        <div class="archive-preview">Flagging a potential budget constraint. · Let's discuss the Q3 marketing strategy. · Confirming attendance for the stakeholder meeting. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-10.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 10, 2026 </div>
+        <div class="archive-preview">moving the needle · picking up on · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-09.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 09, 2026 </div>
+        <div class="archive-preview">touch base · moving the needle · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-08.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 08, 2026 </div>
+        <div class="archive-preview">Please review the attached document. · We need to address this matter urgently. · Let's finalize the budget allocation by Friday. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-07.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 07, 2026 </div>
+        <div class="archive-preview">Review the attached proposal · Touch base next week · Flagging a potential risk · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-06.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 06, 2026 </div>
+        <div class="archive-preview">Wrapping up · Going forward · Can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-05.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 05, 2026 </div>
+        <div class="archive-preview">Touch base · Wrapping up · Going forward · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-04.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 04, 2026 </div>
+        <div class="archive-preview">touch base · can't help wondering · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-03.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 03, 2026 </div>
+        <div class="archive-preview">can't help wondering · moving the needle · picking up on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-02.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 02, 2026 </div>
+        <div class="archive-preview">touch base tomorrow · on the same page · per our discussion earlier · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-07-01.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">July 01, 2026 </div>
+        <div class="archive-preview">touch base tomorrow · per our discussion earlier · due by end of day · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-30.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 30, 2026 </div>
+        <div class="archive-preview">I appreciate your input · I'll follow up next week · Confirm by EOD tomorrow · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-29.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 29, 2026 </div>
+        <div class="archive-preview">I appreciate your input · I'll follow up next week · Let's keep this confidential · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-28.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 28, 2026 </div>
+        <div class="archive-preview">going forward · confirm by eod · flag potential risks · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-27.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 27, 2026 </div>
+        <div class="archive-preview">touch base shortly · flag potential risks · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-26.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 26, 2026 </div>
+        <div class="archive-preview">going forward · circle back on · confirm by EOD tomorrow · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-25.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 25, 2026 </div>
+        <div class="archive-preview">confirm by EOD tomorrow · review and approve by EOD · provide an update by COB · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-24.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 24, 2026 </div>
+        <div class="archive-preview">Circle back on · Moving the needle · Picking up on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-23.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 23, 2026 </div>
+        <div class="archive-preview">wrapping up · going forward · touch base shortly · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-22.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 22, 2026 </div>
+        <div class="archive-preview">Provide detailed breakdown · Flag potential risks · Touch base shortly · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-21.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 21, 2026 </div>
+        <div class="archive-preview">Touch base shortly. · Provide the detailed breakdown. · Elaborate on the strategy. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-20.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 20, 2026 </div>
+        <div class="archive-preview">touch base shortly · moving the needle · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-19.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 19, 2026 </div>
+        <div class="archive-preview">touch base shortly · due for revision · share insights on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-18.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 18, 2026 </div>
+        <div class="archive-preview">Can you provide more details? · Let's discuss the budget next week. · We need to address this immediately. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-17.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 17, 2026 </div>
+        <div class="archive-preview">Let's align on the project timeline. · Can you elaborate on that point? · Please provide the updated report by EOD. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-16.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 16, 2026 </div>
+        <div class="archive-preview">Wrapping up · Going forward · Can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-15.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 15, 2026 </div>
+        <div class="archive-preview">picking up on · on the same page · per my last email · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-14.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 14, 2026 </div>
+        <div class="archive-preview">Let's ensure all stakeholders are informed. · This aligns with our strategic objectives. · Please provide the requested documentation by EOD. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-13.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 13, 2026 </div>
+        <div class="archive-preview">we recommend reviewing · in light of recent developments · we appreciate your prompt attention · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-12.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 12, 2026 </div>
+        <div class="archive-preview">going forward · touch base · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-11.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 11, 2026 </div>
+        <div class="archive-preview">in light of recent developments · can't help wondering · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-10.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 10, 2026 </div>
+        <div class="archive-preview">we recommend reviewing · in light of recent developments · we appreciate your prompt attention · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-09.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 09, 2026 </div>
+        <div class="archive-preview">can't help wondering · circle back on · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-08.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 08, 2026 </div>
+        <div class="archive-preview">moving the needle · circle back on · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-07.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 07, 2026 </div>
+        <div class="archive-preview">circle back on · picking up on · per my last email · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-06.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 06, 2026 </div>
+        <div class="archive-preview">This aligns with our strategic objectives · Let's ensure all stakeholders are informed · Please provide the requested documentation by EOD · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-05.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 05, 2026 </div>
+        <div class="archive-preview">going forward · moving the needle · picking up on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-04.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 04, 2026 </div>
+        <div class="archive-preview">going forward · picking up on · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-03.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 03, 2026 </div>
+        <div class="archive-preview">touch base · going forward · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-02.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 02, 2026 </div>
+        <div class="archive-preview">touch base · going forward · wrapping up · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-06-01.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">June 01, 2026 </div>
+        <div class="archive-preview">can't help wondering · moving the needle · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-31.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 31, 2026 </div>
+        <div class="archive-preview">touch base · going forward · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-30.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 30, 2026 </div>
+        <div class="archive-preview">Confirm understanding. · Provide additional context. · Explore alternative solutions. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-29.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 29, 2026 </div>
+        <div class="archive-preview">Confirm understanding. · Provide additional context. · Explore alternative solutions. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-28.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 28, 2026 </div>
+        <div class="archive-preview">Aligning our strategies · Provide additional context · Explore alternative solutions · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-27.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 27, 2026 </div>
+        <div class="archive-preview">Confirm understanding. · Provide additional context. · Explore alternative solutions. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-26.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 26, 2026 </div>
+        <div class="archive-preview">Picking up on · Per my last email · Touch base next week · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-25.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 25, 2026 </div>
+        <div class="archive-preview">Can't help wondering. · Touch base next week. · Per my last email. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-24.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 24, 2026 </div>
+        <div class="archive-preview">I'm open to alternative perspectives. · Touch base · Going forward. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-23.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 23, 2026 </div>
+        <div class="archive-preview">I'm open to alternative perspectives. · Could you provide more details? · Let's summarize the key takeaways. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-22.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 22, 2026 </div>
+        <div class="archive-preview">This meets our core objectives. · Going forward. · Can't help wondering. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-21.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 21, 2026 </div>
+        <div class="archive-preview">This meets our core objectives. · Going forward. · Moving the needle. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-20.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 20, 2026 </div>
+        <div class="archive-preview">Moving the needle. · Let's expedite this process. · On the same page. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-19.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 19, 2026 </div>
+        <div class="archive-preview">This meets our core objectives. · Touch base next week. · Let's prioritize Q3 initiatives. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-18.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 18, 2026 </div>
+        <div class="archive-preview">circle back on · moving the needle · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-17.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 17, 2026 </div>
+        <div class="archive-preview">picking up on · moving the needle · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-16.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 16, 2026 </div>
+        <div class="archive-preview">Touch base · Picking up on · Per my last email. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-15.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 15, 2026 </div>
+        <div class="archive-preview">Touch base · Wrapping up · Can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-14.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 14, 2026 </div>
+        <div class="archive-preview">Per my last email. · Please review the attached document. · Could you provide more details? · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-13.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 13, 2026 </div>
+        <div class="archive-preview">Looking forward to collaborating. · Please review the attached document. · Could you provide more details? · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-12.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 12, 2026 </div>
+        <div class="archive-preview">touch base · wrapping up · going forward · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-11.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 11, 2026 </div>
+        <div class="archive-preview">can't help wondering · circle back on · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-10.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 10, 2026 </div>
+        <div class="archive-preview">moving the needle · circle back on · on the same page · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-09.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 09, 2026 </div>
+        <div class="archive-preview">going forward · picking up on · can't help wondering · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-08.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 08, 2026 </div>
+        <div class="archive-preview">touch base · going forward · picking up on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-07.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 07, 2026 </div>
+        <div class="archive-preview">going forward · picking up on · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-06.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 06, 2026 </div>
+        <div class="archive-preview">touch base · going forward · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-05.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 05, 2026 </div>
+        <div class="archive-preview">touch base · wrapping up · going forward · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-04.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 04, 2026 </div>
+        <div class="archive-preview">we appreciate your input · can't help wondering · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-03.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 03, 2026 </div>
+        <div class="archive-preview">we appreciate your input · touch base · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-02.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 02, 2026 </div>
+        <div class="archive-preview">Flag any outstanding issues. · Let's review the budget breakdown. · Let's discuss the client feedback. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-05-01.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">May 01, 2026 </div>
+        <div class="archive-preview">we appreciate your support · quick check-in on progress · let's explore alternative solutions · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-04-30.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">April 30, 2026 </div>
+        <div class="archive-preview">We appreciate your input · Quick check-in · Key considerations include · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-04-29.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">April 29, 2026 </div>
+        <div class="archive-preview">Has the vendor confirmation been finalized? · Please provide the detailed report by EOD · Let's discuss the Q3 projections in the meeting · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-04-28.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">April 28, 2026 </div>
+        <div class="archive-preview">picking up on · on the same page · per my last email · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-04-27.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">April 27, 2026 </div>
+        <div class="archive-preview">wrapping up · can't help wondering · circle back on · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-04-26.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">April 26, 2026 </div>
+        <div class="archive-preview">touch base · going forward · moving the needle · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-04-23.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">April 23, 2026 </div>
+        <div class="archive-preview">I see the merit in that approach; however, let's explore a different angle. · I'd like to ensure I understand correctly; could you clarify your reasoning behind that? · Let's recap the main points before moving on to the next agenda item. · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-04-22.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">April 22, 2026 </div>
+        <div class="archive-preview">I hear you, but there is a risk that... · To pick up on a point raised earlier... · This framework allows us to... · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+    <a href="/daily_english/archive/2026-04-21.html" class="archive-item">
+      <div class="archive-left">
+        <div class="archive-date">April 21, 2026 </div>
+        <div class="archive-preview">I see where you're coming from, but... · I wanted to flag this for your attention. · Could you clarify what you mean by... · …</div>
+      </div>
+      <div class="archive-arrow">›</div>
+    </a>
+  </div>
+</div>
+
+<!-- ── ABOUT TAB ── -->
+<div id="section-about" class="section">
+  <div class="content" style="padding-top: 24px;">
+    <div class="about-card">
+      <h3>About This Program</h3>
+      <p>A daily habit for building professional English vocabulary and phrasing — designed for non-native speakers working in English-language environments.</p>
+      <p>Five carefully selected phrases are generated every day at midnight. Each one is practical, work-relevant, and explained with real examples and tone guidance.</p>
+    </div>
+    <div class="about-card">
+      <h3>Phrase Categories</h3>
+      <ul class="category-list">
+        <li><div class="dot"></div>Meeting language — start, navigate, and close meetings</li>
+        <li><div class="dot"></div>Email & report writing — professional written tone</li>
+        <li><div class="dot"></div>Polite disagreement — push back without friction</li>
+        <li><div class="dot"></div>Presenting ideas — structure and deliver arguments</li>
+        <li><div class="dot"></div>Asking for clarification — professionally and confidently</li>
+        <li><div class="dot"></div>Transitions & wrap-up — connect and conclude</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3>How to Use It</h3>
+      <p>Read each phrase in the morning or evening. Try to use at least one in your actual work that day — in a meeting, an email, or a report.</p>
+      <p>The best learning happens when you connect a phrase to a real situation you experienced.</p>
+    </div>
+    <div class="about-card">
+      <h3>Add to Home Screen</h3>
+      <p><strong>iPhone:</strong> Open in Safari → tap Share → "Add to Home Screen"</p>
+      <p><strong>Android:</strong> Open in Chrome → tap ⋮ menu → "Add to Home Screen"</p>
+      <p>It will appear as an icon — just like a real app.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── BOTTOM NAV ── -->
+<div class="bottom-nav">
+  <a class="bottom-nav-item active" id="nav-today" href="/daily_english/">
+    <span class="bottom-nav-icon">📖</span>
+    Today
+  </a>
+  <a class="bottom-nav-item" id="nav-archive" href="/daily_english/archive/">
+    <span class="bottom-nav-icon">📅</span>
+    Archive
+  </a>
+  <button class="bottom-nav-item" id="nav-about" onclick="switchTab('about')">
+    <span class="bottom-nav-icon">ℹ️</span>
+    About
+  </button>
+</div>
+
+<script>
+  function switchTab(tab) {
+    ['today', 'archive', 'about'].forEach(t => {
+      document.getElementById('section-' + t).classList.remove('active');
+      document.getElementById('nav-' + t).classList.remove('active');
+    });
+    document.getElementById('section-' + tab).classList.add('active');
+    document.getElementById('nav-' + tab).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  // Progress tracker — marks cards as you scroll past them
+  const cards = document.querySelectorAll('.card[data-phrase]');
+  const seen = new Set();
+
+  function updateProgress() {
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85) {
+        seen.add(card.dataset.phrase);
+      }
+    });
+    const count = seen.size;
+    document.getElementById('progress-label').textContent = count + ' of 5 phrases reviewed';
+    document.getElementById('progress-fill').style.width = (count / 5 * 100) + '%';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  setTimeout(updateProgress, 300);
+</script>
+
+</body>
+</html>
